@@ -3,4 +3,9 @@
     <string name="welcome_back">welcome back</string>
     <string name="signin_to_countenue">Signin to countenue</string>
     <string name="username">username</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string-array name="iAM">
+        <item>Person</item>
+        <item>Company</item>
+    </string-array>
 </resources>
