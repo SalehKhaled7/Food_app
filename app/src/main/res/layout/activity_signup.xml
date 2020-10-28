@@ -10,8 +10,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Signup"
+        android:layout_marginTop="100dp"
+        android:text="@string/signup"
         android:textColor="#5E5353"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_signup_name"
+        android:id="@+id/reg_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -35,14 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="text">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_signup_email"
+        android:id="@+id/reg_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -51,20 +51,20 @@
         android:paddingRight="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_name">
+        app:layout_constraintTop_toBottomOf="@+id/reg_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_signup_phone"
+        android:id="@+id/reg_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -74,13 +74,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_email">
+        app:layout_constraintTop_toBottomOf="@+id/reg_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:inputType="phone">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -88,37 +88,69 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_login_pass"
+        android:id="@+id/reg_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_phone"
-        app:passwordToggleEnabled="true"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg_phone"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/sp_im"
+
+    <RadioGroup
+        android:id="@+id/reg_radio_grp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:entries="@array/iAM"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
+        android:orientation="horizontal"
+        android:paddingStart="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_pass" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_pass"
+        tools:ignore="RtlSymmetry">
+
+        <RadioButton
+            android:id="@+id/reg_radio_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/person" />
+
+        <RadioButton
+            android:id="@+id/reg_radio_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/company" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/reg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg_radio_grp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

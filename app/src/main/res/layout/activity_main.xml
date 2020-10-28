@@ -22,10 +22,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tv_login_email"
+        android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="50dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
@@ -36,7 +36,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+
             android:hint="Email"
             android:inputType="textEmailAddress">
 
@@ -45,49 +45,52 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tv_login_pass"
+        android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         app:errorEnabled="true"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_email"
+        app:layout_constraintTop_toBottomOf="@+id/login_email"
         app:passwordToggleEnabled="true"
         tools:layout_editor_absoluteX="0dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+
             android:hint="Password"
             android:inputType="textPassword">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_fogot_pass"
+    <Button
+        android:id="@+id/login_forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Forgot Password?"
-        android:onClick="fogotPass"
-        android:textColor="#6979CD"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_pass" />
+        android:layout_marginEnd="40dp"
+        android:background="#00000000"
+        android:text="Fogor Password ?"
+        android:textColor="#3072A6"
+        android:textSize="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/login_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:onClick="login"
+
+        android:onClick=""
         android:text="Login"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_pass" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -99,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login">
+        app:layout_constraintTop_toBottomOf="@+id/login_btn">
 
         <TextView
             android:id="@+id/textView2"
@@ -115,11 +118,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Creat a new account"
-            android:textColor="#677ADF"
+            android:text="Create a new account"
+            android:clickable="true"
+            android:textColor="#3072A6"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            android:focusable="true" />
     </LinearLayout>
 
 
