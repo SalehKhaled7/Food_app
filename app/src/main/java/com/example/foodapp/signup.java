@@ -31,36 +31,130 @@ public class signup extends AppCompatActivity {
         //connect variables with elements in signup activity
         regName=findViewById(R.id.reg_name);
         regEmail=findViewById(R.id.reg_email);
-        regEmail=findViewById(R.id.reg_email);
         regPhone=findViewById(R.id.reg_phone);
         regPass=findViewById(R.id.reg_pass);
         regRadioGroup=findViewById(R.id.reg_radio_grp);
         regButton=findViewById(R.id.reg_btn);
 
         //save data in firebase on click button
-        regButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users");//user is the table that we want to add the data to
 
-                //get all the values
-                String name = regName.getEditText().getText().toString();
-                String email = regEmail.getEditText().getText().toString();
-                int phoneNumber = Integer.parseInt(regPhone.getEditText().getText().toString());
-                String passWord = regPass.getEditText().getText().toString();
-                String type = checkButton();
-                String address = "default address";
-                int donations = 0;
-                int donationReceived= 0;
-                String id = String.valueOf(phoneNumber);
-
-
-                UserHelperClass helperClass =new UserHelperClass(name,email,phoneNumber,passWord,type,address,donations,donationReceived);
-                reference.child(id).setValue(helperClass); // phone number is UK
-            }
-        });
+//        regButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                rootNode = FirebaseDatabase.getInstance();
+//                reference = rootNode.getReference("users");//user is the table that we want to add the data to
+//
+//                //get all the values
+//                String name = regName.getEditText().getText().toString();
+//                String email = regEmail.getEditText().getText().toString();
+//                int phoneNumber = Integer.parseInt(regPhone.getEditText().getText().toString());
+//                String passWord = regPass.getEditText().getText().toString();
+//                String type = checkButton();
+//                String address = "default address";
+//                int donations = 0;
+//                int donationReceived= 0;
+//                String id = String.valueOf(phoneNumber);
+//
+//
+//                UserHelperClass helperClass =new UserHelperClass(name,email,phoneNumber,passWord,type,address,donations,donationReceived);
+//                reference.child(id).setValue(helperClass); // phone number is UK
+//            }
+//        });
     }
+    private Boolean validateName(){
+
+        String val = regName.getEditText().getText().toString();
+        if(val.isEmpty()){
+            regName.setError("name can't be empty");
+            return false;
+        }else if (val.length() <=4){
+            regName.setError("name is too short");
+            return false;
+        }else if (val.length() >=25){
+            regName.setError("name is too long");
+            return false;
+        }else {
+            regName.setError(null);
+            regName.setErrorEnabled(false);
+            return true;
+        }
+    }
+    private Boolean validateEmail(){
+
+        String val = regEmail.getEditText().getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if (val.isEmpty()) {
+            regEmail.setError("Email can't be empty");
+            return false;
+        } else if (!val.matches(emailPattern)) {
+            regEmail.setError("Invalid email address");
+            return false;
+        } else {
+            regEmail.setError(null);
+            regEmail.setErrorEnabled(false);
+            return true;
+        }
+    }
+    private Boolean validatePhoneNumber(){
+
+        String val = regPhone.getEditText().getText().toString();
+        if(val.isEmpty()){
+            regPhone.setError("Phone number can't be empty");
+            return false;
+        }else {
+            regPhone.setError(null);
+            regPhone.setErrorEnabled(false);
+            return true;
+        }
+    }
+    private Boolean validatePassword(){
+
+        String val = regPass.getEditText().getText().toString();
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{4,}" +               //at least 4 characters
+                "$";
+        if (val.isEmpty()) {
+            regPass.setError("password can't be empty");
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            regPass.setError("Invalid password");
+            return false;
+        } else {
+            regPass.setError(null);
+            regPass.setErrorEnabled(false);
+            return true;
+        }
+    }
+    public void registerUser(View view){//save the data to fire base
+        if (!validateName() | !validateEmail() | !validatePhoneNumber() | !validatePassword()){
+            return;
+        }
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");//user is the table that we want to add the data to
+
+        //get all the values
+        String name = regName.getEditText().getText().toString();
+        String email = regEmail.getEditText().getText().toString();
+        int phoneNumber = Integer.parseInt(regPhone.getEditText().getText().toString());
+        String passWord = regPass.getEditText().getText().toString();
+        String type = checkButton();
+        String address = "default address";
+        int donations = 0;
+        int donationReceived= 0;
+        String id = String.valueOf(phoneNumber);
+
+
+        UserHelperClass helperClass =new UserHelperClass(name,email,phoneNumber,passWord,type,address,donations,donationReceived);
+        reference.child(id).setValue(helperClass); // phone number is PK
+    }
+
     public String checkButton(){//see what radio button did the user chose
         int radioId =regRadioGroup.getCheckedRadioButtonId();
         regType = findViewById(radioId);
