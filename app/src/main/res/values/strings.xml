@@ -12,6 +12,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="email">Email</string>
     <string name="name">Name</string>
+    <string name="login">Login</string>
     <string-array name="iAM">
         <item>Person</item>
         <item>Company</item>

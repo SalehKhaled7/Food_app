@@ -2,13 +2,13 @@ package com.example.foodapp;
 
 public class UserHelperClass {
 
-    private String name ,email,PassWord,type,address;
-    private int phoneNumber,donations,donation_received;
+    private String name ,email,PassWord,type,address,phoneNumber,donations,donation_received;
+
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String name, String email, int phoneNumber, String passWord, String type, String address, int donations, int donation_received) {
+    public UserHelperClass(String name, String email, String phoneNumber, String passWord, String type, String address, String donations, String donation_received) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -59,27 +59,27 @@ public class UserHelperClass {
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getDonations() {
+    public String getDonations() {
         return donations;
     }
 
-    public void setDonations(int donations) {
+    public void setDonations(String donations) {
         this.donations = donations;
     }
 
-    public int getDonation_received() {
+    public String getDonation_received() {
         return donation_received;
     }
 
-    public void setDonation_received(int donation_received) {
+    public void setDonation_received(String donation_received) {
         this.donation_received = donation_received;
     }
 

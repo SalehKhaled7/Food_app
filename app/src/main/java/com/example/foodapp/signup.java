@@ -141,18 +141,18 @@ public class signup extends AppCompatActivity {
 
         //get all the values
         String name = regName.getEditText().getText().toString();
-        String email = regEmail.getEditText().getText().toString();
-        int phoneNumber = Integer.parseInt(regPhone.getEditText().getText().toString());
+        String email = regEmail.getEditText().getText().toString().replace('.',',');
+        String phoneNumber = regPhone.getEditText().getText().toString();
         String passWord = regPass.getEditText().getText().toString();
         String type = checkButton();
         String address = "default address";
-        int donations = 0;
-        int donationReceived= 0;
-        String id = String.valueOf(phoneNumber);
+        String donations = "0";
+        String donationReceived= "0";
+       // String id = String.valueOf(phoneNumber);
 
 
         UserHelperClass helperClass =new UserHelperClass(name,email,phoneNumber,passWord,type,address,donations,donationReceived);
-        reference.child(id).setValue(helperClass); // phone number is PK
+        reference.child(email).setValue(helperClass); // phone number is PK
     }
 
     public String checkButton(){//see what radio button did the user chose
