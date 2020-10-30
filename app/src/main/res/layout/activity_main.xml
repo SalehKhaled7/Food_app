@@ -82,7 +82,7 @@
         android:id="@+id/login_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
 
         android:onClick="loginUser"
         android:text="@string/login"

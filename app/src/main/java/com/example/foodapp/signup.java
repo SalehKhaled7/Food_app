@@ -2,8 +2,10 @@ package com.example.foodapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -26,6 +28,10 @@ public class signup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().hide();// hide the action bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //hide the status bar
+
         setContentView(R.layout.activity_signup);
 
         //connect variables with elements in signup activity
@@ -132,6 +138,7 @@ public class signup extends AppCompatActivity {
             return true;
         }
     }
+
     public void registerUser(View view){//save the data to fire base
         if (!validateName() | !validateEmail() | !validatePhoneNumber() | !validatePassword()){
             return;
@@ -153,6 +160,7 @@ public class signup extends AppCompatActivity {
 
         UserHelperClass helperClass =new UserHelperClass(name,email,phoneNumber,passWord,type,address,donations,donationReceived);
         reference.child(email).setValue(helperClass); // phone number is PK
+        Intent intent = new Intent(this,MainActivity.class);
     }
 
     public String checkButton(){//see what radio button did the user chose
