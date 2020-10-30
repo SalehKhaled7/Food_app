@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();// hide the action bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //hide the status bar
+
         setContentView(R.layout.activity_main);
         //connect variables with elements in login activity
 
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                             String receivedDonationsFromDB = snapshot.child(userEnteredEmail).child("donation_received").getValue(String.class);
 
                             //pass user data to next activity
-                            Intent intent = new Intent(getApplicationContext(),Welcome.class);
+                            Intent intent = new Intent(getApplicationContext(), Home.class);
                             intent.putExtra("name",nameFromDB);
                             intent.putExtra("email",emailFromDB);
                             intent.putExtra("phone",phoneFromDB);
