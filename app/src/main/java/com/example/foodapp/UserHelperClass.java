@@ -5,21 +5,28 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 public class UserHelperClass {
 
-    private String name ,email,PassWord,type,address,phoneNumber,donations,donation_received;
+    private String id,name ,email,PassWord,type,address,phoneNumber,donations,donation_received;
 
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String name, String email, String phoneNumber, String passWord, String type, String address, String donations, String donation_received) {
+    public UserHelperClass(String id,String name, String phoneNumber, String type, String address, String donations, String donation_received) {
+        this.id=id;
         this.name = name;
-        this.email = email;
         this.phoneNumber = phoneNumber;
-        this.PassWord = passWord;
         this.type = type;
         this.address = address;
         this.donations = donations;
         this.donation_received = donation_received;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
