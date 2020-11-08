@@ -1,5 +1,8 @@
 package com.example.foodapp;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+
 public class UserHelperClass {
 
     private String name ,email,PassWord,type,address,phoneNumber,donations,donation_received;
