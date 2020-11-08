@@ -9,8 +9,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     //variables
     TextInputLayout logEmail, logPass;
     Button logButton, logForgot;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         logEmail = findViewById(R.id.login_email);
         logPass = findViewById(R.id.login_password);
         logButton = findViewById(R.id.login_btn);
+        mAuth =FirebaseAuth.getInstance();
 
         TextView open_sign_up = findViewById(R.id.tv_create_new_account);
         open_sign_up.setOnClickListener(new View.OnClickListener() {
@@ -89,69 +96,80 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void isUser(){
-        String userEnteredEmail = logEmail.getEditText().getText().toString().replace('.',',').trim();
+        String userEnteredEmail = logEmail.getEditText().getText().toString().trim();
         String userEnteredPass = logPass.getEditText().getText().toString().trim();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUser = reference.orderByChild("email").equalTo(userEnteredEmail);
-
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        mAuth.signInWithEmailAndPassword(userEnteredEmail,userEnteredPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                //check if the user is registered in database
-                if(snapshot.exists()){
-
-                    logEmail.setError(null);//set email error msg tp null if user tried again
-                    logEmail.setErrorEnabled(false); // remove error msg
-
-                    String passwordFromDB = snapshot.child(userEnteredEmail).child("passWord").getValue(String.class);
-
-                    //check if the password is correct
-
-                    if (passwordFromDB != null) {
-                        if(passwordFromDB.equals(userEnteredPass)){
-
-                            logPass.setError(null);//set password error msg tp null if user tried again
-                            logPass.setErrorEnabled(false); // remove error msg
-
-                            //get user data from database
-                            String nameFromDB = snapshot.child(userEnteredEmail).child("name").getValue(String.class);
-                            String emailFromDB = snapshot.child(userEnteredEmail).child("email").getValue(String.class);
-                            String phoneFromDB = snapshot.child(userEnteredEmail).child("phoneNumber").getValue(String.class);
-                            String typeFromDB = snapshot.child(userEnteredEmail).child("type").getValue(String.class);
-                            String addressFromDB = snapshot.child(userEnteredEmail).child("address").getValue(String.class);
-                            String donationsFromDB = snapshot.child(userEnteredEmail).child("donations").getValue(String.class);
-                            String receivedDonationsFromDB = snapshot.child(userEnteredEmail).child("donation_received").getValue(String.class);
-
-                            //pass user data to next activity
-                            Intent intent = new Intent(getApplicationContext(), Home.class);
-                            intent.putExtra("name",nameFromDB);
-                            intent.putExtra("email",emailFromDB);
-                            intent.putExtra("phone",phoneFromDB);
-                            intent.putExtra("passWord",passwordFromDB);
-                            intent.putExtra("type",typeFromDB);
-                            intent.putExtra("address",addressFromDB);
-                            intent.putExtra("donations",donationsFromDB);
-                            intent.putExtra("donation_received",receivedDonationsFromDB);
-                            startActivity(intent);
-                        }
-                        else {  //if the user entered wrong password
-                            logPass.setError("Wrong Password");
-                            logPass.requestFocus();
-                        }
-                    }
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getBaseContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
-                else {  //if the user entered wrong email
-                    logEmail.setError("Email in not registered");
-                    logEmail.requestFocus();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+//        Query checkUser = reference.orderByChild("email").equalTo(userEnteredEmail);
+//        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                //check if the user is registered in database
+//                if(snapshot.exists()){
+//
+//                    logEmail.setError(null);//set email error msg tp null if user tried again
+//                    logEmail.setErrorEnabled(false); // remove error msg
+//
+//                    String passwordFromDB = snapshot.child(userEnteredEmail).child("passWord").getValue(String.class);
+//
+//                    //check if the password is correct
+//
+//                    if (passwordFromDB != null) {
+//                        if(passwordFromDB.equals(userEnteredPass)){
+//
+//                            logPass.setError(null);//set password error msg tp null if user tried again
+//                            logPass.setErrorEnabled(false); // remove error msg
+//
+//                            //get user data from database
+//                            String nameFromDB = snapshot.child(userEnteredEmail).child("name").getValue(String.class);
+//                            String emailFromDB = snapshot.child(userEnteredEmail).child("email").getValue(String.class);
+//                            String phoneFromDB = snapshot.child(userEnteredEmail).child("phoneNumber").getValue(String.class);
+//                            String typeFromDB = snapshot.child(userEnteredEmail).child("type").getValue(String.class);
+//                            String addressFromDB = snapshot.child(userEnteredEmail).child("address").getValue(String.class);
+//                            String donationsFromDB = snapshot.child(userEnteredEmail).child("donations").getValue(String.class);
+//                            String receivedDonationsFromDB = snapshot.child(userEnteredEmail).child("donation_received").getValue(String.class);
+//
+//                            //pass user data to next activity
+//                            Intent intent = new Intent(getApplicationContext(), Home.class);
+//                            intent.putExtra("name",nameFromDB);
+//                            intent.putExtra("email",emailFromDB);
+//                            intent.putExtra("phone",phoneFromDB);
+//                            intent.putExtra("passWord",passwordFromDB);
+//                            intent.putExtra("type",typeFromDB);
+//                            intent.putExtra("address",addressFromDB);
+//                            intent.putExtra("donations",donationsFromDB);
+//                            intent.putExtra("donation_received",receivedDonationsFromDB);
+//                            startActivity(intent);
+//                        }
+//                        else {  //if the user entered wrong password
+//                            logPass.setError("Wrong Password");
+//                            logPass.requestFocus();
+//                        }
+//                    }
+//                }
+//                else {  //if the user entered wrong email
+//                    logEmail.setError("Email in not registered");
+//                    logEmail.requestFocus();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 }
