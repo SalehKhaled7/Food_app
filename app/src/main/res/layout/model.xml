@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    android:paddingVertical="2dp"
+
+
+    >
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="118dp"
+    android:gravity="center"
+
+
+
+    >
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/modelImageIv"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@color/design_default_color_primary_dark"
+            android:scaleType="centerInside"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:id="@+id/modelTitleTv"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Title"
+            android:textColor="#706F71"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/modelDescrTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="Sample Description ..."
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+
+            />
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>
