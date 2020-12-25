@@ -1,92 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Donate">
+    android:background="#F3F5F6"
+    tools:context=".Donate"
+    >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/donation_title"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="247dp"
+        android:layout_marginTop="50dp"
 
-        android:layout_marginTop="96dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
+
+        android:elevation="15dp"
+        android:orientation="vertical"
+        android:padding="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#ffff">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_one"
+            android:text="Ditails"
+            android:textSize="18sp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/donation_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="title"
-            android:inputType="text">
+            >
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="title"
+                android:inputType="text"
+                app:boxBackgroundColor="@android:color/transparent"
 
-    <com.google.android.material.textfield.TextInputLayout
+                >
 
-        android:id="@+id/donation_description"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/donation_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="description"
+                android:inputType="text"
+                app:boxBackgroundColor="@android:color/transparent">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/donation_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="amount"
+                android:inputType="number"
+                app:boxBackgroundColor="@android:color/transparent">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/linearLayout5"
+
+        android:layout_width="match_parent"
+
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:background="#ffff"
+        android:elevation="15dp"
+        android:orientation="vertical"
+        android:padding="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_one"
+            android:text="images"
+            android:textSize="18sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/add_img_btn"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/imageadd" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/img_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffff"
+        android:elevation="15dp"
+        android:orientation="vertical"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_one"
+            android:text="Address"
+            android:textSize="18sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/donation_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="description"
-            android:inputType="text">
+            >
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="city"
+                android:inputType="text"
+                app:boxBackgroundColor="@android:color/transparent"
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/donation_amount"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+                >
 
-        android:layout_marginTop="240dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/donation_district"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
 
-            android:hint="amount"
-            android:inputType="text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="district"
+                android:inputType="text"
+                app:boxBackgroundColor="@android:color/transparent">
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/donation_home_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="street,aprtment and other ditails"
+
+                android:inputType="textMultiLine"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:lines="3">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/donation_list_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="388dp"
-        android:text="List"
-        android:onClick="list"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        tools:layout_editor_absoluteX="16dp"
+        android:text="list"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
