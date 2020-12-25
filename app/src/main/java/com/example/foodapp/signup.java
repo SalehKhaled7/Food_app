@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
-
+        //update
     //variables
     TextInputLayout regName, regEmail, regPhone, regPass;
     RadioGroup regRadioGroup;
