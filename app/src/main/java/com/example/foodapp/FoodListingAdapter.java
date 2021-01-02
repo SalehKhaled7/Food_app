@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.models.FoodDonationHelperClass;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ public class FoodListingAdapter extends RecyclerView.Adapter<MyHolder> implement
         //bind data to our views
         holder.mTitleTv.setText(Donations.get(position).getTitle());
         holder.mDescrTv.setText(Donations.get(position).getDescription());
+        Picasso.get().load(Donations.get(position).getImageList().get(0)).into(holder.mimageIv);
         //holder.mimageIv.setImageURI(Uri.parse(Donations.get(position).getImageList().get(0)));
 
         //animation
@@ -57,19 +59,14 @@ public class FoodListingAdapter extends RecyclerView.Adapter<MyHolder> implement
                 //get data from item clicked
                 String title = Donations.get(pos).getTitle();
                 String descr = Donations.get(pos).getDescription();
-                //BitmapDrawable bitmapDrawable = (BitmapDrawable) holder.mimageIv.getDrawable();
-                //get Bitmap from drawable
-               // Bitmap bitmap = bitmapDrawable.getBitmap();
-                //ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                //compress image
-               // bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-                //convert to bytes array
-                //byte[] bytes = stream.toByteArray();
+                String image = Donations.get(position).getImageList().get(0);
+
 
                 //intent,put data to intent,start activity
                 Intent intent = new Intent(c, FoodDetail.class);
                 intent.putExtra("iTitle",title);
                 intent.putExtra("iDescr",descr);
+                intent.putExtra("iImage",image);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                // intent.putExtra("iImage",bytes);
                 c.startActivity(intent);
