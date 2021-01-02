@@ -1,6 +1,6 @@
-package com.example.foodapp;
+package com.example.foodapp.models;
 
-import android.net.Uri;
+import com.example.foodapp.models.AddresshelperClass;
 
 import java.util.ArrayList;
 

@@ -6,21 +6,19 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.foodapp.models.AddresshelperClass;
+import com.example.foodapp.models.FoodDonationHelperClass;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -57,7 +55,7 @@ public class FoodListing extends AppCompatActivity {
         //adapter
         getDataFromFirebase();
         foodListingAdapter = new FoodListingAdapter(getApplicationContext(), donationList);
-        foodListingAdapter.notifyDataSetChanged();
+
         mRecyclerView.setAdapter(foodListingAdapter);
 
     }
@@ -69,33 +67,35 @@ public class FoodListing extends AppCompatActivity {
         imageUriList = new ArrayList<>();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                donationList.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
 
+                    FoodDonationHelperClass donation = new FoodDonationHelperClass();
+                    donation.setId(snapshot.child("id").getValue().toString());
+                    donation.setUserID(snapshot.child("userID").getValue().toString());
+                    donation.setTitle(Objects.requireNonNull(snapshot.child("title").getValue()).toString());
+                    donation.setDescription(Objects.requireNonNull(snapshot.child("description").getValue()).toString());
+                    donation.setAmount(Objects.requireNonNull(snapshot.child("amount").getValue()).toString());
+                    donation.setCreatedAt(Objects.requireNonNull(snapshot.child("createdAt").getValue()).toString());
+                    //get address
+                    AddresshelperClass address = new AddresshelperClass();
+                    address.setCity(Objects.requireNonNull(snapshot.child("address").child("city").getValue()).toString());
+                    address.setDistrict(Objects.requireNonNull(snapshot.child("address").child("district").getValue()).toString());
+                    address.setHomeDetails(Objects.requireNonNull(snapshot.child("address").child("homeDetails").getValue()).toString());
+                    donation.setAddress(address);
+                    //get images
+//                    ArrayList<String> images = new ArrayList<>();
+//                    for (int i = 0; i < snapshot.child("images").getChildrenCount(); i++) {
+//                        images.add(Objects.requireNonNull(snapshot.child("images").child(String.valueOf(i)).getValue()).toString());
+//                    }
+//
+//                    donation.setImageList(images);
 
-                FoodDonationHelperClass donation = new FoodDonationHelperClass();
-                donation.setId(Objects.requireNonNull(snapshot.child("id").getValue()).toString());
-                donation.setUserID(Objects.requireNonNull(snapshot.child("userId").getValue()).toString());
-                donation.setTitle(Objects.requireNonNull(snapshot.child("title").getValue()).toString());
-                donation.setDescription(Objects.requireNonNull(snapshot.child("description").getValue()).toString());
-                donation.setAmount(Objects.requireNonNull(snapshot.child("amount").getValue()).toString());
-                donation.setCreatedAt(Objects.requireNonNull(snapshot.child("createdAt").getValue()).toString());
-                //get address
-                AddresshelperClass address = new AddresshelperClass();
-                address.setCity(Objects.requireNonNull(snapshot.child("address").child("city").getValue()).toString());
-                address.setDistrict(Objects.requireNonNull(snapshot.child("address").child("district").getValue()).toString());
-                address.setHomeDetails(Objects.requireNonNull(snapshot.child("address").child("homeDetails").getValue()).toString());
-                donation.setAddress(address);
-                //get images
-                ArrayList<String> images = new ArrayList<>();
-                for (int i = 0; i < snapshot.child("images").getChildrenCount(); i++) {
-                    images.add(Objects.requireNonNull(snapshot.child("images").child(String.valueOf(i)).getValue()).toString());
+                    //add donation object from firebase to donations list
+                    donationList.add(donation);
                 }
-
-                donation.setImageList(images);
-
-                //add donation object from firebase to donations list
-                donationList.add(donation);
-
+                foodListingAdapter.notifyDataSetChanged();
 
 
             }

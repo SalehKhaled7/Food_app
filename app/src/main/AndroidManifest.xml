@@ -24,8 +24,8 @@
         <activity android:name=".Home">
 
         </activity>
-        <activity android:name=".signup" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.signup" />
+        <activity android:name=".activities.MainActivity">
 
         </activity>
 
