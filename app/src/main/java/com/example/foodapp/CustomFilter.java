@@ -2,6 +2,8 @@ package com.example.foodapp;
 
 import android.widget.Filter;
 
+import com.example.foodapp.models.FoodDonationHelperClass;
+
 import java.util.ArrayList;
 
 public class CustomFilter extends Filter {

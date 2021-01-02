@@ -1,4 +1,4 @@
-package com.example.foodapp;
+package com.example.foodapp.models;
 
 public class image {
     String id;

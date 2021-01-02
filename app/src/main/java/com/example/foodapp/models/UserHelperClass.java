@@ -1,4 +1,4 @@
-package com.example.foodapp;
+package com.example.foodapp.models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

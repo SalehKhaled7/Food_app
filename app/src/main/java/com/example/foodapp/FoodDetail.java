@@ -29,16 +29,16 @@ public class FoodDetail extends AppCompatActivity {
         Intent intent = getIntent();
         String mTitle = intent.getStringExtra("iTitle");
         String mDescr = intent.getStringExtra("iDescr");
-        byte[] mBytes = getIntent().getByteArrayExtra("iImage");
+        //byte[] mBytes = getIntent().getByteArrayExtra("iImage");
         //decode bytes array to bitmap
-        Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes,0,mBytes.length);
+       // Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes,0,mBytes.length);
 
         //set title to actionbar
         actionBar.setTitle(mTitle);
 
         //set data to our views
         mTitleTv.setText(mTitle);
-        mImageTv.setImageBitmap(bitmap);
+       // mImageTv.setImageBitmap(bitmap);
         mDescTv.setText(mDescr);
     }
 
