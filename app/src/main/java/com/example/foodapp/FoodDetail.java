@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class FoodDetail extends AppCompatActivity {
     TextView mTitleTv,mDescTv;
     ImageView mImageTv;
@@ -29,9 +31,11 @@ public class FoodDetail extends AppCompatActivity {
         Intent intent = getIntent();
         String mTitle = intent.getStringExtra("iTitle");
         String mDescr = intent.getStringExtra("iDescr");
-        //byte[] mBytes = getIntent().getByteArrayExtra("iImage");
-        //decode bytes array to bitmap
-       // Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes,0,mBytes.length);
+        String mImage = intent.getStringExtra("iImage");
+
+
+        //set image
+        Picasso.get().load(mImage).into(mImageTv);
 
         //set title to actionbar
         actionBar.setTitle(mTitle);
