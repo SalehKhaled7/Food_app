@@ -2,6 +2,7 @@ package com.example.foodapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,11 +63,13 @@ public class FoodListingAdapter extends RecyclerView.Adapter<MyHolder> implement
                 String image = Donations.get(position).getImageList().get(0);
 
 
+
                 //intent,put data to intent,start activity
                 Intent intent = new Intent(c, FoodDetail.class);
-                intent.putExtra("iTitle",title);
-                intent.putExtra("iDescr",descr);
-                intent.putExtra("iImage",image);
+                intent.putExtra("donation", Donations.get(pos));
+                //intent.putExtra("iTitle",title);
+               // intent.putExtra("iDescr",descr);
+                //intent.putExtra("iImage",image);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                // intent.putExtra("iImage",bytes);
                 c.startActivity(intent);

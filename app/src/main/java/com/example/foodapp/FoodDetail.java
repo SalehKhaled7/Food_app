@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.foodapp.models.FoodDonationHelperClass;
 import com.squareup.picasso.Picasso;
 
 public class FoodDetail extends AppCompatActivity {
@@ -28,12 +29,11 @@ public class FoodDetail extends AppCompatActivity {
         mImageTv = findViewById(R.id.dImageIv);
 
         //intent
-        Intent intent = getIntent();
-        String mTitle = intent.getStringExtra("iTitle");
-        String mDescr = intent.getStringExtra("iDescr");
-        String mImage = intent.getStringExtra("iImage");
-
-
+        Bundle data = getIntent().getExtras();
+        FoodDonationHelperClass donation = data.getParcelable("donation");
+        String mImage = donation.getImageList().get(0);
+        String mDescr = donation.getDescription();
+        String mTitle = donation.getTitle();
         //set image
         Picasso.get().load(mImage).into(mImageTv);
 
