@@ -1,6 +1,9 @@
 package com.example.foodapp.models;
 
-public class AddresshelperClass {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class AddresshelperClass implements Parcelable {
     String city,district,homeDetails;
 
     public AddresshelperClass() {
@@ -11,6 +14,24 @@ public class AddresshelperClass {
         this.district = district;
         this.homeDetails = homeDetails;
     }
+
+    protected AddresshelperClass(Parcel in) {
+        city = in.readString();
+        district = in.readString();
+        homeDetails = in.readString();
+    }
+
+    public static final Creator<AddresshelperClass> CREATOR = new Creator<AddresshelperClass>() {
+        @Override
+        public AddresshelperClass createFromParcel(Parcel in) {
+            return new AddresshelperClass(in);
+        }
+
+        @Override
+        public AddresshelperClass[] newArray(int size) {
+            return new AddresshelperClass[size];
+        }
+    };
 
     public String getCity() {
         return city;
@@ -34,5 +55,17 @@ public class AddresshelperClass {
 
     public void setHomeDetails(String homeDetails) {
         this.homeDetails = homeDetails;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(city);
+        dest.writeString(district);
+        dest.writeString(homeDetails);
     }
 }
