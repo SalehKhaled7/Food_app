@@ -36,7 +36,7 @@ public class FoodListingAdapter extends RecyclerView.Adapter<MyHolder> implement
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         //convert xml to view obj
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model,null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model,parent,false);
 
         return new MyHolder(v);
     }

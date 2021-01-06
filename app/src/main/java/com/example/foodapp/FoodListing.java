@@ -38,6 +38,7 @@ public class FoodListing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSupportActionBar().hide();// hide the action bar
         setContentView(R.layout.activity_food_listing);
         //recyclerview
         mRecyclerView = findViewById(R.id.recycler_view);
@@ -55,7 +56,7 @@ public class FoodListing extends AppCompatActivity {
         //adapter
         getDataFromFirebase();
         foodListingAdapter = new FoodListingAdapter(getApplicationContext(), donationList);
-
+        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(foodListingAdapter);
 
     }

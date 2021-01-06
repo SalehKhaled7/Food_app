@@ -18,6 +18,8 @@ public class FoodDetail extends AppCompatActivity {
     ImageView mImageTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();// hide the action bar
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
 

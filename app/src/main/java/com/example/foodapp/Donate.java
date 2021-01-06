@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.foodapp.models.AddresshelperClass;
@@ -23,9 +26,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -33,7 +39,7 @@ public class Donate extends AppCompatActivity {
 
 
     TextInputLayout donationTitle, donationDescription, donationAmount,donationCity,donationDistrict,donationAddressDetails;
-
+    ProgressBar donationProgress;
     ImageView addImageBtn;
     String id;
     private static final int RESULT_LOAD_IMAGE = 1;
@@ -61,6 +67,7 @@ public class Donate extends AppCompatActivity {
         donationCity = findViewById(R.id.donation_city);
         donationDistrict = findViewById(R.id.donation_district);
         donationAddressDetails = findViewById(R.id.donation_home_address);
+        donationProgress = findViewById(R.id.progressBar_donation);
 
         addImageBtn = findViewById(R.id.add_img_btn);
         imageItemList = new ArrayList<>();
@@ -113,35 +120,51 @@ public class Donate extends AppCompatActivity {
                 String folder = id+"/";
                 mStorageRef = FirebaseStorage.getInstance().getReference();
 
-
+                //upload images to firebase storage
                 for (int i =0 ; i<imageItemList.size();i++){
 
                     Uri imageUri = imageItemList.get(i).imageUri;
                     StorageReference riversRef = mStorageRef.child(folder+i);
-                    UploadTask uploadTask=riversRef.putFile(imageUri);
+                    //compress images before the upload
+                    Bitmap bmp = null;
+                    try {
+                        bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.JPEG, 25, baos);
+                    byte[] data = baos.toByteArray();
+                    //uploading the image
+                    UploadTask uploadTask = riversRef.putBytes(data);
+                    //UploadTask uploadTask=riversRef.putFile(imageUri);
                     uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
+                                    donationProgress.setVisibility(View.INVISIBLE);
                                     imageUriList.add(uri.toString());
                                     reference.child(id).child("images").setValue(imageUriList);
-                                    Toast.makeText(getApplicationContext(),uri.toString(),Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"Upload successful", Toast.LENGTH_LONG).show();
                                 }
                             });
-
-
-                            }
-
-
+                        }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(),"bad",Toast.LENGTH_SHORT).show();
+                            donationProgress.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(),"upload failed please try again latter",Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            donationProgress.setVisibility(View.VISIBLE);
                         }
                     });
                 }
+
                 FoodDonationHelperClass donation = new FoodDonationHelperClass(id,userID,title,description,createdAt,amount,imageUriList,address);
                 reference.child(id).setValue(donation); // id number is PK
 
