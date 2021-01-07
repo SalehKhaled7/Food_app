@@ -16,7 +16,7 @@
             android:id="@+id/donate_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Donate"
+            android:text="@string/homeButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

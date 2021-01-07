@@ -31,7 +31,7 @@
                 android:paddingStart="10dp"
                 android:layout_margin="5dp"
                 android:layout_centerVertical="true"
-                android:text="Categories"
+                android:text="@string/categoryTitle"
                 android:textSize="30sp"
                 android:fontFamily="@font/fredoka_one"
                 android:textColor="#000000"
@@ -39,8 +39,6 @@
 
 
         </RelativeLayout>
-
-
 
             <RelativeLayout
                 android:id="@+id/foodList"
@@ -55,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
                     android:padding="25dp"
-                    android:text="Food"
+                    android:text="@string/categorySubTitle1"
                     android:textSize="30sp" />
                 <ImageView
                     android:layout_width="200dp"
@@ -75,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clothing"
+                android:text="@string/categorySubTitle2"
                 android:textSize="30sp"
                 android:fontFamily="@font/fredoka_one"
                 android:padding="25dp"
@@ -101,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fredoka_one"
                 android:padding="25dp"
-                android:text="Other"
+                android:text="@string/categorySubTitle3"
                 android:textSize="30sp" />
 
             <ImageView
@@ -112,13 +110,5 @@
 
                 android:src="@drawable/stuff" />
         </RelativeLayout>
-
-
-
-
-
-
     </LinearLayout>
-
-
 </ScrollView>

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Login"
+        android:text="@string/loginTitle"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Email"
+            android:hint="@string/loginEmail"
             android:inputType="textEmailAddress">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:hint="Password"
+            android:hint="@string/loginPassword"
             android:inputType="textPassword">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:background="#00000000"
-        android:text="Fogor Password ?"
+        android:text="@string/loginForgotPassword"
         android:textColor="#3072A6"
         android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
         android:layout_marginTop="48dp"
 
         android:onClick="loginUser"
-        android:text="@string/login"
+        android:text="@string/loginButton"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -112,7 +112,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dont have account?"
+            android:text="@string/loginHaveAccount"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/button"
             app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Create a new account"
+            android:text="@string/loginCreatAccount"
             android:clickable="true"
             android:textColor="#3072A6"
             android:textStyle="bold"

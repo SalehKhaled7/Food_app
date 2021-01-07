@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yemek Uygulaması</string>
+    <string name="welcome_back">Tekrar Hoşgeldiniz</string>
+    <string name="signin_to_countenue">Signin to countenue</string>
+    <string name="username">Kullanıcı Adı</string>
+    <string name="person">Kişi</string>
+    <string name="company">Şirket</string>
+    <string name="signup">Kayıt Ol</string>
+    <string name="register">Üye ol</string>
+    <string name="password">Şifre</string>
+    <string name="phone_number">Telefon Numarası</string>
+    <string name="email">Email</string>
+    <string name="name">İsim</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="categories">Kategoriler</string>
+    <string name="profile">Profil</string>
+    <string-array name="iAM">
+        <item>Kişi</item>
+        <item>Şirket</item>
+    </string-array>
+
+    <!-- activity-donate strings -->
+    <string name="details">Detaylar</string>
+    <string name="title">Başlık</string>
+    <string name="description">Açıklama</string>
+    <string name="amount">Miktar</string>
+    <string name="images">Resimler</string>
+    <string name="address">Adres</string>
+    <string name="city">Şehir</string>
+    <string name="district">İlçe</string>
+    <string name="otherDetails">Cadde,Apartman ve Diğer Detaylar</string>
+    <string name="list">Listele</string>
+
+    <!-- activity-main strings -->
+    <string name="loginTitle">Giriş Yap</string>
+    <string name="loginEmail">Email</string>
+    <string name="loginPassword">Şifre</string>
+    <string name="loginForgotPassword">Şifreni Hatırlamıyor musun?</string>
+    <string name="loginButton">Giriş Yap</string>
+    <string name="loginHaveAccount">Hesabın Yok Mu?</string>
+    <string name="loginCreatAccount">Yeni Bir Hesap Oluştur</string>
+
+    <!-- activity-profile strings -->
+    <string name="profileTitle">Profil</string>
+    <string name="profileUpdate">Güncelle</string>
+
+    <!-- fragment-home strings -->
+    <string name="homeButton">Bağış Yap</string>
+
+    <!-- fragment-category strings -->
+    <string name="categoryTitle">Kategoriler</string>
+    <string name="categorySubTitle1">Yemek</string>
+    <string name="categorySubTitle2">Kıyafet</string>
+    <string name="categorySubTitle3">Diğer</string>
+
+    <!-- fragment-profile strings -->
+    <string name="profileAdvert">İlanlar</string>
+    <string name="profileSettings">Ayarlar</string>
+    <string name="profileLanguage">Dil Seç</string>
+    <string name="profileAbout">Hakkımızda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

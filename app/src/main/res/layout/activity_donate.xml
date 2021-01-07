@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
-            android:text="Ditails"
+            android:text="@string/details"
             android:textSize="18sp" />
 
 
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="title"
+                android:hint="@string/title"
                 android:inputType="text"
                 app:boxBackgroundColor="@android:color/transparent"
 
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="description"
+                android:hint="@string/description"
                 android:inputType="text"
                 app:boxBackgroundColor="@android:color/transparent">
 
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="amount"
+                android:hint="@string/amount"
                 android:inputType="number"
                 app:boxBackgroundColor="@android:color/transparent">
 
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
-            android:text="images"
+            android:text="@string/images"
             android:textSize="18sp" />
 
 
@@ -153,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
-            android:text="Address"
+            android:text="@string/address"
             android:textSize="18sp" />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/donation_city"
@@ -166,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="city"
+                android:hint="@string/city"
                 android:inputType="text"
                 app:boxBackgroundColor="@android:color/transparent"
 
@@ -184,7 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="district"
+                android:hint="@string/district"
                 android:inputType="text"
                 app:boxBackgroundColor="@android:color/transparent">
 
@@ -200,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:hint="street,aprtment and other ditails"
+                android:hint="@string/otherDetails"
 
                 android:inputType="textMultiLine"
                 app:boxBackgroundColor="@android:color/transparent"
@@ -218,7 +218,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         tools:layout_editor_absoluteX="16dp"
-        android:text="list"/>
+        android:text="@string/list"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
