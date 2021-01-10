@@ -10,11 +10,16 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.foodapp.models.FoodDonationHelperClass;
+import com.squareup.picasso.Picasso;
+
 public class FoodDetail extends AppCompatActivity {
     TextView mTitleTv,mDescTv;
     ImageView mImageTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();// hide the action bar
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
 
@@ -26,12 +31,13 @@ public class FoodDetail extends AppCompatActivity {
         mImageTv = findViewById(R.id.dImageIv);
 
         //intent
-        Intent intent = getIntent();
-        String mTitle = intent.getStringExtra("iTitle");
-        String mDescr = intent.getStringExtra("iDescr");
-        //byte[] mBytes = getIntent().getByteArrayExtra("iImage");
-        //decode bytes array to bitmap
-       // Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes,0,mBytes.length);
+        Bundle data = getIntent().getExtras();
+        FoodDonationHelperClass donation = data.getParcelable("donation");
+        String mImage = donation.getImageList().get(0);
+        String mDescr = donation.getDescription();
+        String mTitle = donation.getTitle();
+        //set image
+        Picasso.get().load(mImage).into(mImageTv);
 
         //set title to actionbar
         actionBar.setTitle(mTitle);

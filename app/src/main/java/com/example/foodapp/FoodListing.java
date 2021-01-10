@@ -38,6 +38,7 @@ public class FoodListing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSupportActionBar().hide();// hide the action bar
         setContentView(R.layout.activity_food_listing);
         //recyclerview
         mRecyclerView = findViewById(R.id.recycler_view);
@@ -55,7 +56,7 @@ public class FoodListing extends AppCompatActivity {
         //adapter
         getDataFromFirebase();
         foodListingAdapter = new FoodListingAdapter(getApplicationContext(), donationList);
-
+        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(foodListingAdapter);
 
     }
@@ -85,12 +86,12 @@ public class FoodListing extends AppCompatActivity {
                     address.setHomeDetails(Objects.requireNonNull(snapshot.child("address").child("homeDetails").getValue()).toString());
                     donation.setAddress(address);
                     //get images
-//                    ArrayList<String> images = new ArrayList<>();
-//                    for (int i = 0; i < snapshot.child("images").getChildrenCount(); i++) {
-//                        images.add(Objects.requireNonNull(snapshot.child("images").child(String.valueOf(i)).getValue()).toString());
-//                    }
-//
-//                    donation.setImageList(images);
+                    ArrayList<String> images = new ArrayList<>();
+                    for (int i = 0; i < snapshot.child("images").getChildrenCount(); i++) {
+                        images.add(snapshot.child("images").child(String.valueOf(i)).getValue().toString());
+                    }
+
+                    donation.setImageList(images);
 
                     //add donation object from firebase to donations list
                     donationList.add(donation);
@@ -112,72 +113,6 @@ public class FoodListing extends AppCompatActivity {
     }
 
 
-    //add models yo arraylist
-//    private ArrayList<FoodDonationHelperClass> getPlayers(){
-//        ArrayList<FoodDonationHelperClass> Donations = new ArrayList<>();
-//
-//        FoodDonationHelperClass p = new FoodDonationHelperClass();
-//        p.setTitle("Kenny");
-//        p.setDescription("Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.Lorem Ipsum Kenny.");
-//        Uri uri = Uri.parse("android.resource://com.example.foodapp/drawable/londonbridge");
-//        ImageItem image = new ImageItem(uri);
-//        imageUriList = new ArrayList<>();
-//        imageUriList.add(uri.toString());
-//        p.setImageList(imageUriList);
-//        Donations.add(p);
-//
-//        p = new FoodDonationHelperClass();
-//        p.setTitle("LondonBridge");
-//        p.setDescription("Lorem Ipsum London Bridge.Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .");
-//        uri = Uri.parse("android.resource://com.example.foodapp/drawable/londonbridge");
-//        image = new ImageItem(uri);
-//        imageUriList = new ArrayList<>();
-//        imageUriList.add(uri.toString());
-//        p.setImageList(imageUriList);
-//        Donations.add(p);
-//
-//        p = new FoodDonationHelperClass();
-//        p.setTitle("Collesseum");
-//        p.setDescription("Lorem Ipsum Collesseum.Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .");
-//        uri = Uri.parse("android.resource://com.example.foodapp/drawable/londonbridge");
-//        image = new ImageItem(uri);
-//        imageUriList = new ArrayList<>();
-//        imageUriList.add(uri.toString());
-//        p.setImageList(imageUriList);
-//        Donations.add(p);
-//
-//        p = new FoodDonationHelperClass();
-//        p.setTitle("Dunya");
-//        p.setDescription("Lorem Ipsum Dunya.Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .");
-//        uri = Uri.parse("android.resource://com.example.foodapp/drawable/londonbridge");
-//        image = new ImageItem(uri);
-//        imageUriList = new ArrayList<>();
-//        imageUriList.add(uri.toString());
-//        p.setImageList(imageUriList);
-//        Donations.add(p);
-//
-//        p = new FoodDonationHelperClass();
-//        p.setTitle("Eiffel");
-//        p.setDescription("Lorem Ipsum Eiffel.Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .");
-//        uri = Uri.parse("android.resource://com.example.foodapp/drawable/londonbridge");
-//        image = new ImageItem(uri);
-//        imageUriList = new ArrayList<>();
-//        imageUriList.add(uri.toString());
-//        p.setImageList(imageUriList);
-//        Donations.add(p);
-//
-//        p = new FoodDonationHelperClass();
-//        p.setTitle("Pisa");
-//        p.setDescription("Lorem Ipsum Pisa.Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .Lorem Ipsum .");
-//        uri = Uri.parse("android.resource://com.example.foodapp/drawable/londonbridge");
-//        image = new ImageItem(uri);
-//        imageUriList = new ArrayList<>();
-//        imageUriList.add(uri.toString());
-//        p.setImageList(imageUriList);
-//        Donations.add(p);
-//
-//        return  Donations;
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
