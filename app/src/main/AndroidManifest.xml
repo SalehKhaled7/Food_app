@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApp">
-        <activity android:name=".FoodDetail"></activity>
+        <activity android:name=".LanguageActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".FoodDetail" />
         <activity android:name=".Donate" />
-        <activity android:name=".FoodListing" >
-
-        </activity>
+        <activity android:name=".FoodListing" />
         <activity android:name=".SplashScreen">
 
         </activity>
@@ -25,9 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.signup" />
-        <activity android:name=".activities.MainActivity">
-
-        </activity>
+        <activity android:name=".activities.MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

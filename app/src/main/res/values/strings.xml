@@ -3,7 +3,6 @@
     <string name="welcome_back">welcome back</string>
     <string name="signin_to_countenue">Signin to countenue</string>
     <string name="username">username</string>
-    <string name="create_a_new_account">Create a new account</string>
     <string name="person">Person</string>
     <string name="company">Company</string>
     <string name="signup">Signup</string>
@@ -12,7 +11,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="email">Email</string>
     <string name="name">Name</string>
-    <string name="login">Login</string>
+
     <string name="home">Home</string>
     <string name="categories">Categories</string>
     <string name="profile">Profile</string>
@@ -20,6 +19,48 @@
         <item>Person</item>
         <item>Company</item>
     </string-array>
+
+    <!-- activity-donate strings -->
+    <string name="details">Details</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="images">Images</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="district">District</string>
+    <string name="otherDetails">Street,Apartment Other Details</string>
+    <string name="list">List</string>
+
+    <!-- activity-main strings -->
+    <string name="loginTitle">Login</string>
+    <string name="loginEmail">Email</string>
+    <string name="loginPassword">Password</string>
+    <string name="loginForgotPassword">Forgot Password?</string>
+    <string name="loginButton">Login</string>
+    <string name="loginHaveAccount">Do Not Have Account?</string>
+    <string name="loginCreatAccount">Create A New Account</string>
+
+    <!-- activity-profile strings -->
+    <string name="profileTitle">Profile</string>
+    <string name="profileUpdate">Update</string>
+
+    <!-- fragment-home strings -->
+    <string name="homeButton">Donate</string>
+
+    <!-- fragment-category strings -->
+    <string name="categoryTitle">Categories</string>
+    <string name="categorySubTitle1">Food</string>
+    <string name="categorySubTitle2">Clothes</string>
+    <string name="categorySubTitle3">Other</string>
+
+    <!-- fragment-profile strings -->
+    <string name="profileAdvert">Adverts</string>
+    <string name="profileSettings">Settings</string>
+    <string name="profileLanguage">Choose Language</string>
+    <string name="profileAbout">About Us</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
