@@ -2,7 +2,7 @@ package com.example.foodapp.models;
 
 public class Order {
     String id,donation_id,user_id,created_at,status;
-
+    public Order(){};
     public Order(String id, String donation_id, String user_id, String created_at, String status) {
         this.id = id;
         this.donation_id = donation_id;

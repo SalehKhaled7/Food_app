@@ -14,6 +14,12 @@
         app:cnb_backgroundColor="#BFFADA"
         app:cnb_iconColor="#494242"/>
     <item
+        android:id="@+id/bottom_nav_basket"
+        android:title="My Orders"
+        android:icon="@drawable/ic_shopping_basket"
+        app:cnb_backgroundColor="#FF9191"
+        app:cnb_iconColor="#494242"/>
+    <item
         android:id="@+id/bottom_nav_profile"
         android:title="@string/profile"
         android:icon="@drawable/ic_profile"

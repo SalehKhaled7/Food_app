@@ -42,6 +42,9 @@ public class Home extends AppCompatActivity {
                     case R.id.bottom_nav_categories:
                         fragment= new CategoryFragment();
                         break;
+                    case R.id.bottom_nav_basket:
+                        fragment= new MyOrdersFragment();
+                        break;
                     case R.id.bottom_nav_profile:
                         fragment= new ProfileFragment();
                         break;
