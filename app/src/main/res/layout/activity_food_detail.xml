@@ -70,6 +70,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/order_btn"
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginBottom="30dp"
