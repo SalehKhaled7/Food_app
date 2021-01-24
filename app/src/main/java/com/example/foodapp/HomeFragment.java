@@ -89,6 +89,6 @@ public class HomeFragment extends Fragment {
 
         adapter= new Main_slider_adapter(getActivity(),main_sliderArrayList);
         viewPager.setAdapter(adapter);
-        viewPager.setPadding(100,0,100,400);
+        viewPager.setPadding(100,0,100,300);
     }
 }
