@@ -33,7 +33,11 @@
 
         app:errorEnabled="true"
         app:layout_constraintTop_toBottomOf="@+id/tv_signIn"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        app:boxCornerRadiusTopStart="25dp"
+        app:boxCornerRadiusTopEnd="25dp"
+        app:boxCornerRadiusBottomStart="25dp"
+        app:boxCornerRadiusBottomEnd="25dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -57,7 +61,11 @@
 
         app:layout_constraintTop_toBottomOf="@+id/login_email"
         app:passwordToggleEnabled="true"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        app:boxCornerRadiusTopStart="25dp"
+        app:boxCornerRadiusTopEnd="25dp"
+        app:boxCornerRadiusBottomStart="25dp"
+        app:boxCornerRadiusBottomEnd="25dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -73,6 +81,7 @@
         android:id="@+id/login_forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginEnd="40dp"
         android:background="#00000000"
         android:text="@string/loginForgotPassword"
@@ -86,7 +95,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-
+        android:background="@drawable/order_button"
+        android:elevation="20dp"
+        app:backgroundTint="@null"
         android:onClick="loginUser"
         android:text="@string/loginButton"
         android:textSize="18sp"

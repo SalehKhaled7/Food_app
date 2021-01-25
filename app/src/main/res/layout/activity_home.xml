@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:id="@+id/fragment_container">
 
+
         <com.ismaeldivita.chipnavigation.ChipNavigationBar
             android:id="@+id/bottom_nav_menu"
             android:layout_width="match_parent"
@@ -27,6 +28,7 @@
             app:cnb_menuResource="@menu/bottom_nav_menu"
             app:cnb_radius="15dp"
             app:cnb_unselectedColor="@color/black"
+
 
             />
     </RelativeLayout>
