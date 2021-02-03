@@ -86,6 +86,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 nav_main.setVisibility(View.VISIBLE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,new ProfileFragment2()).commit();
                 break;
+            case R.id.nav_donations:
+                toolbar.setTitle("My donations");
+                nav_main.setVisibility(View.VISIBLE);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,new My_donations_fragment()).commit();
+                break;
             case R.id.nav_address:
                 toolbar.setTitle("My address");
                 nav_main.setVisibility(View.VISIBLE);

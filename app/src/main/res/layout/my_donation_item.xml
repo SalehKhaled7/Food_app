@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,14 +11,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/order_img"
+            android:id="@+id/my_donation_item_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@color/design_default_color_primary_dark"
+            android:src="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.003"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -28,14 +28,14 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/order_img"
+            app:layout_constraintStart_toEndOf="@+id/my_donation_item_img"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/order_title"
+                android:id="@+id/my_donation_item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Order title"
+                android:text="my donation title"
                 android:textSize="20sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
@@ -44,36 +44,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/order_desc"
+                android:id="@+id/my_donation_item_desc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:maxLines="3"
                 android:minLines="3"
-                android:text="order desc"
+                android:text="my donation desc"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/order_date"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/order_title"
-                app:layout_constraintVertical_bias="0.058" />
+                app:layout_constraintTop_toBottomOf="@+id/my_donation_item_title" />
 
-            <TextView
-                android:id="@+id/order_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dd/mm/yyyy"
-                android:layout_marginBottom="15dp"
-                android:layout_marginRight="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
