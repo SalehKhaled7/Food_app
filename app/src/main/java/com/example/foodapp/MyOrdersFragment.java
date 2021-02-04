@@ -66,7 +66,7 @@ public class MyOrdersFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 my_order_list.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if (snapshot.child("user_id").getValue().toString().equals(user.getUid())) {
+                    if (snapshot.child("user_id").getValue().toString().equals(user.getUid()) && snapshot.child("status").getValue().toString().equals("available")) {
                         Order order = new Order();
                         order.setId(snapshot.child("id").getValue().toString());
                         order.setDonation_id(snapshot.child("donation_id").getValue().toString());

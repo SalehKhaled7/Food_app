@@ -81,6 +81,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         View nav_main = findViewById(R.id.fragment_container2);
         main.setVisibility(View.INVISIBLE);
         switch (item.getItemId()){
+            case R.id.nav_delivery:
+                toolbar.setTitle("Delivery");
+                nav_main.setVisibility(View.VISIBLE);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,new DeliveryFragment()).commit();
+                break;
             case R.id.nav_profile:
                 toolbar.setTitle("Profile");
                 nav_main.setVisibility(View.VISIBLE);
@@ -117,6 +122,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
         }
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 

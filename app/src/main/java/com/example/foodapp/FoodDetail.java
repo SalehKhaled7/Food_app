@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodapp.adapters.FoodDetailImagesAdapter;
+import com.example.foodapp.models.Delivery;
 import com.example.foodapp.models.FoodDonationHelperClass;
 import com.example.foodapp.models.Order;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +33,7 @@ public class FoodDetail extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    DatabaseReference reference2;
     String id;
 
     @Override
@@ -95,6 +97,19 @@ public class FoodDetail extends AppCompatActivity {
                 String status = "available";
                 Order order = new Order(id,donation_id,user_id,created_at,status);
                 reference.child(id).setValue(order); // id number is PK
+
+                reference2 = rootNode.getReference("deliveries");//donations is the table that we want to add the data to
+
+                String delivery_id = rootNode.getReference("deliveries").push().getKey(); // make UID for order
+                String from = donation.getUserID();
+                String to = mAuth.getUid();
+                String delivery_status = "new";
+                String delivered_by =" ";
+                String delivered_at =" ";
+                String delivery_created_At = Calendar.getInstance().getTime().toString();
+                Delivery delivery = new Delivery(delivery_id,from,to,delivered_by,delivered_at,delivery_status,delivery_created_At);
+                reference2.child(delivery_id).setValue(delivery); // id number is PK
+
             }
 
         });
