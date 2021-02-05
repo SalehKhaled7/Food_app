@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.foodapp.Home;
 import com.example.foodapp.R;
+import com.example.foodapp.models.AddresshelperClass;
 import com.example.foodapp.models.UserHelperClass;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -176,7 +177,7 @@ public class signup extends AppCompatActivity {
                     String name = regName.getEditText().getText().toString();
                     String phoneNumber = regPhone.getEditText().getText().toString();
                     String type = checkButton();
-                    String address = "default address";
+                    AddresshelperClass address = new AddresshelperClass("city","district","homeDetails");
                     String donations = "0";
                     String donationReceived = "0";
                     UserHelperClass helperClass = new UserHelperClass(id, name, phoneNumber, type, address, donations, donationReceived);

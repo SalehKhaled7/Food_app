@@ -39,6 +39,10 @@ public class ProfileFragment2 extends Fragment {
         ImageView user_image = view.findViewById(R.id.user_image);
         TextInputLayout user_display_name = view.findViewById(R.id.user_name_display_tv);
         TextInputLayout user_Phone = view.findViewById(R.id.user_phone_tv);
+        TextInputLayout user_address_city = view.findViewById(R.id.user_city_tv);
+        TextInputLayout user_address_district = view.findViewById(R.id.user_district_tv);
+        TextInputLayout user_address_apt = view.findViewById(R.id.user_homeDetails_tv);
+
         Button user_info_update = view.findViewById(R.id.user_info_update);
 
         UserHelperClass userHelperClass = new UserHelperClass();
@@ -51,6 +55,10 @@ public class ProfileFragment2 extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user_Phone.getEditText().setText(snapshot.child("phoneNumber").getValue().toString());
+                user_address_city.getEditText().setText(snapshot.child("address").child("city").getValue().toString());
+                user_address_district.getEditText().setText(snapshot.child("address").child("district").getValue().toString());
+                user_address_apt.getEditText().setText(snapshot.child("address").child("homeDetails").getValue().toString());
+
             }
 
             @Override
@@ -70,6 +78,9 @@ public class ProfileFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 reference.child("phoneNumber").setValue(user_Phone.getEditText().getText().toString());
+                reference.child("address").child("city").setValue(user_address_city.getEditText().getText().toString());
+                reference.child("address").child("district").setValue(user_address_district.getEditText().getText().toString());
+                reference.child("address").child("homeDetails").setValue(user_address_apt.getEditText().getText().toString());
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setDisplayName(user_display_name.getEditText().getText().toString()).build();
 
