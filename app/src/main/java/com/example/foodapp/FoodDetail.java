@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodapp.adapters.FoodDetailImagesAdapter;
 import com.example.foodapp.models.Delivery;
@@ -101,14 +102,18 @@ public class FoodDetail extends AppCompatActivity {
                 reference2 = rootNode.getReference("deliveries");//donations is the table that we want to add the data to
 
                 String delivery_id = rootNode.getReference("deliveries").push().getKey(); // make UID for order
+                String delivery_title = donation.getTitle();
                 String from = donation.getUserID();
                 String to = mAuth.getUid();
                 String delivery_status = "new";
                 String delivered_by =" ";
                 String delivered_at =" ";
                 String delivery_created_At = Calendar.getInstance().getTime().toString();
-                Delivery delivery = new Delivery(delivery_id,from,to,delivered_by,delivered_at,delivery_status,delivery_created_At);
+                Delivery delivery = new Delivery(delivery_id,id,delivery_title,from,to,delivered_by,delivered_at,delivery_status,delivery_created_At);
                 reference2.child(delivery_id).setValue(delivery); // id number is PK
+
+                Toast.makeText(getApplicationContext(),"your order is made check the basked ",Toast.LENGTH_SHORT).show();
+                finish();
 
             }
 

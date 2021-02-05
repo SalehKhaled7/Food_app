@@ -82,7 +82,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         main.setVisibility(View.INVISIBLE);
         switch (item.getItemId()){
             case R.id.nav_delivery:
-                toolbar.setTitle("Delivery");
+                toolbar.setTitle("Deliveries");
                 nav_main.setVisibility(View.VISIBLE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,new DeliveryFragment()).commit();
                 break;
