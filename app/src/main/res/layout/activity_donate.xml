@@ -166,7 +166,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
             android:text="@string/address"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+
+
+            />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/donation_city"
             android:layout_width="match_parent"
@@ -220,6 +223,24 @@
 
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+
+            android:id="@+id/address_maps_btn"
+            android:layout_width="372dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+
+            android:background="@drawable/order_button"
+            android:elevation="20dp"
+            android:text="@string/addressMap"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     </LinearLayout>

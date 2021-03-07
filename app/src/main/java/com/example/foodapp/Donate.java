@@ -56,6 +56,8 @@ public class Donate extends AppCompatActivity {
     private StorageReference mStorageRef;
 
     Button DonationListBtn;
+    Button addressMap;
+    String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,19 @@ public class Donate extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.img_recycler);
 
         DonationListBtn = findViewById(R.id.donation_list_btn);
+        addressMap = findViewById(R.id.address_maps_btn);
+
+        Intent intent = getIntent();
+        address = intent.getStringExtra("address");
+        donationAddressDetails.getEditText().setText(address);
+
+        addressMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addressMap = new Intent(getApplicationContext(),MapsActivity.class);
+                startActivity(addressMap);
+            }
+        });
 
 
 

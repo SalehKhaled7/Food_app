@@ -31,6 +31,7 @@
     <string name="district">İlçe</string>
     <string name="otherDetails">Cadde,Apartman ve Diğer Detaylar</string>
     <string name="list">Listele</string>
+    <string name="addressMap">Adres Ekle</string>
 
     <!-- activity-main strings -->
     <string name="loginTitle">Giriş Yap</string>
