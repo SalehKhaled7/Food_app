@@ -180,7 +180,8 @@ public class signup extends AppCompatActivity {
                     AddresshelperClass address = new AddresshelperClass("city","district","homeDetails");
                     String donations = "0";
                     String donationReceived = "0";
-                    UserHelperClass helperClass = new UserHelperClass(id, name, phoneNumber, type, address, donations, donationReceived);
+                    String deliveryPoints = "0";
+                    UserHelperClass helperClass = new UserHelperClass(id, name, phoneNumber, type, address, donations, donationReceived,deliveryPoints);
                     reference.child(id).setValue(helperClass); // id number is PK
                     Intent intent = new Intent(getApplicationContext(), Home.class);
                     startActivity(intent);

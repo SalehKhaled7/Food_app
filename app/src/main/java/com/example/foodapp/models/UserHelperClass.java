@@ -8,14 +8,14 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 public class UserHelperClass implements Parcelable {
 
-    private String id,name ,email,PassWord,type,phoneNumber,donations,donation_received;
+    private String id,name ,email,PassWord,type,phoneNumber,donations,donation_received,delivery_points;
     private AddresshelperClass address = new AddresshelperClass();
 
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String id,String name, String phoneNumber, String type, AddresshelperClass address, String donations, String donation_received) {
+    public UserHelperClass(String id,String name, String phoneNumber, String type, AddresshelperClass address, String donations, String donation_received,String delivery_points) {
         this.id=id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -23,6 +23,7 @@ public class UserHelperClass implements Parcelable {
         this.address = address;
         this.donations = donations;
         this.donation_received = donation_received;
+        this.delivery_points=delivery_points;
     }
 
     protected UserHelperClass(Parcel in) {
@@ -35,6 +36,7 @@ public class UserHelperClass implements Parcelable {
         donations = in.readString();
         donation_received = in.readString();
         address = in.readParcelable(AddresshelperClass.class.getClassLoader());
+        delivery_points =in.readString();
     }
 
     public static final Creator<UserHelperClass> CREATOR = new Creator<UserHelperClass>() {
@@ -121,6 +123,13 @@ public class UserHelperClass implements Parcelable {
         this.donation_received = donation_received;
     }
 
+    public String getDelivery_points() {
+        return delivery_points;
+    }
+
+    public void setDelivery_points(String delivery_points) {
+        this.delivery_points = delivery_points;
+    }
 
     @Override
     public int describeContents() {
@@ -138,5 +147,6 @@ public class UserHelperClass implements Parcelable {
         dest.writeString(donations);
         dest.writeString(donation_received);
         dest.writeParcelable(address, flags);
+        dest.writeString(delivery_points);
     }
 }

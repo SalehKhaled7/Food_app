@@ -42,6 +42,7 @@ public class ProfileFragment2 extends Fragment {
         TextInputLayout user_address_city = view.findViewById(R.id.user_city_tv);
         TextInputLayout user_address_district = view.findViewById(R.id.user_district_tv);
         TextInputLayout user_address_apt = view.findViewById(R.id.user_homeDetails_tv);
+        TextView user_delivery_points = view.findViewById(R.id.user_delivery_points);
 
         Button user_info_update = view.findViewById(R.id.user_info_update);
 
@@ -58,6 +59,8 @@ public class ProfileFragment2 extends Fragment {
                 user_address_city.getEditText().setText(snapshot.child("address").child("city").getValue().toString());
                 user_address_district.getEditText().setText(snapshot.child("address").child("district").getValue().toString());
                 user_address_apt.getEditText().setText(snapshot.child("address").child("homeDetails").getValue().toString());
+                user_delivery_points.setText(snapshot.child("delivery_points").getValue().toString());
+
 
             }
 

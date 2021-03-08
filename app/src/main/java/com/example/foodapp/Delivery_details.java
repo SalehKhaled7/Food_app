@@ -22,11 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class Delivery_details extends AppCompatActivity {
-    DatabaseReference user_from,user_to ,delivery_ref,order_ref;
+    DatabaseReference user_from,user_to ,delivery_ref,order_ref,current_user;
     TextView from_city , from_district,from_apt_detail ,to_city , to_district,to_apt_detail ,delivery_title;
     Button delivered_btn;
     String city_from,city_to,district_from,district_to,apt_from,apt_to;
     FirebaseUser curr_user;
+    int delivery_points;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();// hide the action bar
@@ -93,13 +94,30 @@ public class Delivery_details extends AppCompatActivity {
         delivered_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                current_user= FirebaseDatabase.getInstance().getReference().child("users").child(curr_user.getUid());
+                current_user.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        delivery_points=Integer.parseInt(snapshot.child("delivery_points").getValue().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                delivery_points++;
+                current_user.child("delivery_points").setValue(delivery_points);
+
                 delivery_ref = FirebaseDatabase.getInstance().getReference().child("deliveries").child(delivery.getId());
                 delivery_ref.child("status").setValue("delivered");
                 delivery_ref.child("delivered_at").setValue(Calendar.getInstance().getTime().toString());
                 delivery_ref.child("delivered_by").setValue(curr_user.getDisplayName());
-
+                //there is a bug in next line
                 order_ref = FirebaseDatabase.getInstance().getReference().child("orders").child(delivery.getOrder_id());
                 order_ref.child("status").setValue("done");
+
+
                 Toast.makeText(getApplicationContext(),"thank you , for delivering",Toast.LENGTH_SHORT).show();
                 finish();
 
