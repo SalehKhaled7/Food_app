@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         if (firebaseUser != null){
             Intent intent = new Intent(getApplicationContext(),Home.class);
             startActivity(intent);
+            finish();
         }
 
         TextView open_sign_up = findViewById(R.id.tv_create_new_account);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     public void openSignUpActivity() {
         Intent intent = new Intent(getApplicationContext(), signup.class);
         startActivity(intent);
+        finish();
     }
 
     private Boolean validateEmail() {
