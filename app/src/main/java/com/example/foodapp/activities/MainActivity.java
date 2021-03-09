@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
         logPass = findViewById(R.id.login_password);
         logButton = findViewById(R.id.login_btn);
         mAuth =FirebaseAuth.getInstance();
+
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser != null){
+            Intent intent = new Intent(getApplicationContext(),Home.class);
+            startActivity(intent);
+        }
 
         TextView open_sign_up = findViewById(R.id.tv_create_new_account);
         open_sign_up.setOnClickListener(new View.OnClickListener() {
