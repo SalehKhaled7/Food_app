@@ -32,6 +32,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     TextView username_tv;
     TextView userEmail_tv;
 
+    //quit the app with 2 back press
+    private long backPressedTime;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -126,7 +129,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }else {
-            super.onBackPressed();
+
+            if (backPressedTime + 2000 > System.currentTimeMillis()){
+                super.onBackPressed();
+            }else {
+                Toast.makeText(getBaseContext(),"Press back again to exit",Toast.LENGTH_SHORT).show();
+            }
+            backPressedTime=System.currentTimeMillis();
         }
 
     }
