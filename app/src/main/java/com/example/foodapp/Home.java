@@ -20,6 +20,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.example.foodapp.activities.MainActivity;
+import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import java.util.Objects;
 
@@ -31,6 +35,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     Toolbar toolbar;
     TextView username_tv;
     TextView userEmail_tv;
+    private FirebaseAuth firebaseAuth;
 
     //quit the app with 2 back press
     private long backPressedTime;
@@ -115,10 +120,35 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_home:
                 main.setVisibility(View.VISIBLE);
                 nav_main.setVisibility(View.INVISIBLE);
-
                 break;
+            case R.id.nav_sign_out:
+                AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(this);
 
+                alertDialog2.setTitle("Confirm SignOut");
+                alertDialog2.setMessage("Are you sure you want to Signout?");
 
+                alertDialog2.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Write your code here to execute after dialog
+                                FirebaseAuth.getInstance().signOut();
+                                Intent i = new Intent(Home.this, MainActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }
+                        });
+                alertDialog2.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Write your code here to execute after dialog
+                                Toast.makeText(getApplicationContext(),
+                                        "You clicked on NO", Toast.LENGTH_SHORT)
+                                        .show();
+                                dialog.cancel();
+                            }
+                        });
+                alertDialog2.show();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
