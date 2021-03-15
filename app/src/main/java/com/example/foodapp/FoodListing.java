@@ -1,6 +1,7 @@
 package com.example.foodapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,7 +39,8 @@ public class FoodListing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();// hide the action bar
+        //getSupportActionBar().hide();// hide the action bar
+        ActionBar actionBar = getSupportActionBar();
         setContentView(R.layout.activity_food_listing);
         //recyclerview
         mRecyclerView = findViewById(R.id.recycler_view);
