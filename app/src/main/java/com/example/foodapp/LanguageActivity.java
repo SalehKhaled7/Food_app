@@ -26,7 +26,7 @@ public class LanguageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_language);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.app_name));
+        actionBar.setTitle(getResources().getString(R.string.profileLanguage));
         languageList = findViewById(R.id.languageList);
 
         ArrayList<String> arrayList = new ArrayList<>();
