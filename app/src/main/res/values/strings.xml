@@ -61,6 +61,9 @@
     <string name="profileLanguage">Choose Language</string>
     <string name="profileAbout">About Us</string>
 
+    <!-- fragment-settings strings -->
+    <string name="deleteAccount">Delete Account</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -61,6 +61,9 @@
     <string name="profileLanguage">Dil Seç</string>
     <string name="profileAbout">Hakkımızda</string>
 
+    <!-- fragment-settings strings -->
+    <string name="deleteAccount">Hesabımı Sil</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
