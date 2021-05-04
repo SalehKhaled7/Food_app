@@ -67,25 +67,21 @@ public class HomeFragment extends Fragment {
         main_sliderArrayList = new ArrayList<>();
 
         main_sliderArrayList.add(new Main_slider(
-                "this is title 1",
-                " this is some random test instead of the description ",
+                "The Happiness",
+                "happiness doesn’t result from what we get, but from what we give ",
                 R.drawable.slider1
         ));
         main_sliderArrayList.add(new Main_slider(
-                "this is title 2",
-                " this is some random test instead of the description ",
+                "The Success",
+                "Measure your success, not by money but by the number of faces you bring smile upon, each day",
                 R.drawable.sider_2
         ));
         main_sliderArrayList.add(new Main_slider(
                 "this is title 3",
-                " this is some random test instead of the description ",
-                R.drawable.slider_3
-        ));
-        main_sliderArrayList.add(new Main_slider(
-                "this is title 4",
-                " this is some random test instead of the description ",
+                "Donate with freshly cooked or packaged food , NOT leftovers",
                 R.drawable.slider_4
         ));
+
 
         adapter= new Main_slider_adapter(getActivity(),main_sliderArrayList);
         viewPager.setAdapter(adapter);

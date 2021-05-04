@@ -42,7 +42,7 @@ public class Main_slider_adapter extends PagerAdapter {
         //inflate
         View view = LayoutInflater.from(context).inflate(R.layout.main_card_item,container,false);
         ImageView slider_home_fragment = view.findViewById(R.id.slider_home_fragment);
-        TextView slider_title = view.findViewById(R.id.slider_title);
+        //TextView slider_title = view.findViewById(R.id.slider_title);
         TextView slider_desc = view.findViewById(R.id.slider_desc);
 
         Main_slider main_slider = main_sliderArrayList.get(position);
@@ -51,7 +51,7 @@ public class Main_slider_adapter extends PagerAdapter {
         int image = main_slider.getImage();
 
         slider_home_fragment.setImageResource(image);
-        slider_title.setText(title);
+        //slider_title.setText(title);
         slider_desc.setText(description);
 
         view.setOnClickListener(new View.OnClickListener() {
