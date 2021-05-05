@@ -115,7 +115,16 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,new AboutUsFragment()).commit();
                 break;
             case R.id.nav_share:
-                Toast.makeText(this, "share", Toast.LENGTH_SHORT).show();
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                String shareBody = "Download this app bro :  ";
+                String shareSub = "FoodApp";
+
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+                shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+
+                startActivity(Intent.createChooser(shareIntent,"Share using"));
+
                 break;
             case R.id.nav_home:
                 main.setVisibility(View.VISIBLE);
