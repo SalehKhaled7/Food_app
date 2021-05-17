@@ -70,4 +70,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_maps">Map</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="we_will_send_you_an_one_time_password_on_this_mobile_phone">We will send you an One Time Password on this mobile phone</string>
+    <string name="enter_mobile_phone">Enter mobile phone</string>
+    <string name="_90">+90 </string>
+    <string name="_1234567890">-1234567890</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="enter_the_otp_sent">Enter the OTP sent</string>
+    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
+    <string name="didn_t_receive_the_otp">Didn\'t receive the OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="verify">Verify</string>
 </resources>

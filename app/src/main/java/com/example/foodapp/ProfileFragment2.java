@@ -1,5 +1,6 @@
 package com.example.foodapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class ProfileFragment2 extends Fragment {
         TextInputLayout user_address_district = view.findViewById(R.id.user_district_tv);
         TextInputLayout user_address_apt = view.findViewById(R.id.user_homeDetails_tv);
         TextView user_delivery_points = view.findViewById(R.id.user_delivery_points);
+        TextView user_phone_textview = view.findViewById(R.id.user_phone_textview);
 
         Button user_info_update = view.findViewById(R.id.user_info_update);
 
@@ -92,12 +94,20 @@ public class ProfileFragment2 extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "profile updated successfully", Toast.LENGTH_SHORT).show();;
+                                    Toast.makeText(getContext(), "profile updated successfully", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
 
 
+            }
+        });
+
+        user_phone_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),SentOTPActivity.class);
+                startActivity(intent);
             }
         });
 
