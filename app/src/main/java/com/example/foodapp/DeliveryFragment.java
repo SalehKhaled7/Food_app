@@ -68,6 +68,7 @@ public class DeliveryFragment extends Fragment implements Delivery_adapter.OnDel
                     if (snapshot.child("status").getValue().toString().equals("new")){
                         Delivery delivery =new Delivery();
                         delivery.setId(snapshot.child("id").getValue().toString());
+                        delivery.setOrder_id(snapshot.child("order_id").getValue().toString());
                         delivery.setTitle(snapshot.child("title").getValue().toString());
                         delivery.setFrom(snapshot.child("from").getValue().toString());
                         delivery.setTo(snapshot.child("to").getValue().toString());

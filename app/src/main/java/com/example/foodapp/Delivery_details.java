@@ -101,13 +101,13 @@ public class Delivery_details extends AppCompatActivity {
             public void onClick(View v) {
 
 
-//                delivery_ref = FirebaseDatabase.getInstance().getReference().child("deliveries").child(delivery.getId());
-//                delivery_ref.child("status").setValue("delivered");
-//                delivery_ref.child("delivered_at").setValue(Calendar.getInstance().getTime().toString());
-//                delivery_ref.child("delivered_by").setValue(curr_user.getDisplayName());
+                delivery_ref = FirebaseDatabase.getInstance().getReference().child("deliveries").child(delivery.getId());
+                delivery_ref.child("status").setValue("delivered");
+                delivery_ref.child("delivered_at").setValue(Calendar.getInstance().getTime().toString());
+                delivery_ref.child("delivered_by").setValue(curr_user.getDisplayName());
                 //there is a bug in next line
-                //order_ref = FirebaseDatabase.getInstance().getReference().child("orders").child(delivery.getOrder_id());
-                //order_ref.child("status").setValue("done");
+                order_ref = FirebaseDatabase.getInstance().getReference().child("orders").child(delivery.getOrder_id());
+                order_ref.child("status").setValue("done");
 
                 current_user= FirebaseDatabase.getInstance().getReference().child("users").child(curr_user.getUid());
                 current_user.addListenerForSingleValueEvent(new ValueEventListener() {
