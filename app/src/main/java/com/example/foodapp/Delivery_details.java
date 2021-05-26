@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodapp.models.Delivery;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class Delivery_details extends AppCompatActivity {
     DatabaseReference user_from,user_to ,delivery_ref,order_ref,current_user;
@@ -27,7 +29,10 @@ public class Delivery_details extends AppCompatActivity {
     Button delivered_btn;
     String city_from,city_to,district_from,district_to,apt_from,apt_to;
     FirebaseUser curr_user;
-    int delivery_points;
+    //int delivery_points;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();// hide the action bar
@@ -94,11 +99,31 @@ public class Delivery_details extends AppCompatActivity {
         delivered_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+//                delivery_ref = FirebaseDatabase.getInstance().getReference().child("deliveries").child(delivery.getId());
+//                delivery_ref.child("status").setValue("delivered");
+//                delivery_ref.child("delivered_at").setValue(Calendar.getInstance().getTime().toString());
+//                delivery_ref.child("delivered_by").setValue(curr_user.getDisplayName());
+                //there is a bug in next line
+                //order_ref = FirebaseDatabase.getInstance().getReference().child("orders").child(delivery.getOrder_id());
+                //order_ref.child("status").setValue("done");
+
                 current_user= FirebaseDatabase.getInstance().getReference().child("users").child(curr_user.getUid());
-                current_user.addValueEventListener(new ValueEventListener() {
+                current_user.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        delivery_points=Integer.parseInt(snapshot.child("delivery_points").getValue().toString());
+                        int delivery_points=Integer.parseInt(snapshot.child("delivery_points").getValue().toString());
+                        HashMap hashMap = new HashMap();
+                        delivery_points++;
+                        hashMap.put("delivery_points",delivery_points++);
+                        current_user.updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                            @Override
+                            public void onSuccess(Object o) {
+                                Toast.makeText(getApplicationContext(),"thank you , for delivering",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                     }
 
                     @Override
@@ -106,20 +131,13 @@ public class Delivery_details extends AppCompatActivity {
 
                     }
                 });
-                delivery_points++;
-                current_user.child("delivery_points").setValue(delivery_points);
 
-                delivery_ref = FirebaseDatabase.getInstance().getReference().child("deliveries").child(delivery.getId());
-                delivery_ref.child("status").setValue("delivered");
-                delivery_ref.child("delivered_at").setValue(Calendar.getInstance().getTime().toString());
-                delivery_ref.child("delivered_by").setValue(curr_user.getDisplayName());
-                //there is a bug in next line
-                order_ref = FirebaseDatabase.getInstance().getReference().child("orders").child(delivery.getOrder_id());
-                order_ref.child("status").setValue("done");
+//                delivery_points++;
+//                current_user.child("delivery_points").setValue(delivery_points);
 
 
-                Toast.makeText(getApplicationContext(),"thank you , for delivering",Toast.LENGTH_SHORT).show();
-                finish();
+
+
 
             }
         });
